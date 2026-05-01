@@ -2,11 +2,11 @@
 
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import type { Mesh } from 'three';
+import * as THREE from 'three';
 import { GLOBE_RADIUS } from '@/lib/globe';
 
 export default function SovereignGlobe() {
-  const wireRef = useRef<Mesh>(null);
+  const wireRef = useRef<THREE.Mesh>(null);
 
   // Very slow Y-axis drift independent of OrbitControls
   useFrame((_, delta) => {
@@ -45,7 +45,7 @@ export default function SovereignGlobe() {
           color="#D4AF37"
           transparent
           opacity={0.018}
-          side={2} // BackSide
+          side={THREE.BackSide}
         />
       </mesh>
     </group>
