@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Activity, Zap, Shield, Globe } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { openTypeform } from '@/lib/typeformPopup';
 import type { TickerItem } from './LiquidTicker';
 
@@ -39,6 +40,9 @@ export default function HUDOverlay({ tickers }: Props) {
   const eth  = tickers.find(t => t.symbol === 'ETH');
   const vol  = useCounter(2_400_000_000, 2800);
   const txns = useCounter(14_892, 2200);
+  const { scrollYProgress } = useScroll();
+  const introOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
+  const introY = useTransform(scrollYProgress, [0, 0.12], [0, -40]);
 
   return (
     <>
@@ -100,7 +104,10 @@ export default function HUDOverlay({ tickers }: Props) {
       </header>
 
       {/* ── Centre hero copy ── */}
-      <div className="fixed inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
+      <motion.div
+        className="fixed inset-0 z-10 flex flex-col items-center justify-center pointer-events-none"
+        style={{ opacity: introOpacity, y: introY }}
+      >
         <div className="text-center px-6 max-w-3xl">
           <div className="fade-up flex items-center justify-center gap-3 mb-8" style={{ animationDelay: '0.8s' }}>
             <div className="w-8 h-px bg-[#D4AF37]/50" />
@@ -171,7 +178,7 @@ export default function HUDOverlay({ tickers }: Props) {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* ── Left HUD panel — Live Network Load ── */}
       <div

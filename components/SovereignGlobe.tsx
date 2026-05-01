@@ -23,9 +23,9 @@ export default function SovereignGlobe() {
         <meshStandardMaterial
           color="#0a0c12"
           emissive="#100b02"
-          emissiveIntensity={0.18}
-          roughness={0.84}
-          metalness={0.16}
+          emissiveIntensity={0.3}
+          roughness={0.76}
+          metalness={0.2}
         />
       </mesh>
 
@@ -36,7 +36,7 @@ export default function SovereignGlobe() {
           color="#D4AF37"
           wireframe
           transparent
-          opacity={0.11}
+          opacity={0.16}
         />
       </mesh>
 
@@ -46,7 +46,7 @@ export default function SovereignGlobe() {
         <meshBasicMaterial
           color="#D4AF37"
           transparent
-          opacity={0.03}
+          opacity={0.045}
           side={THREE.BackSide}
         />
       </mesh>

@@ -14,6 +14,20 @@ interface Props {
 const CURVE_SEGMENTS = 80;
 const PULSE_COUNT = 3;
 
+function hashString(input: string) {
+  let h = 2166136261;
+  for (let i = 0; i < input.length; i += 1) {
+    h ^= input.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function seededRandom(seed: number, salt: number) {
+  const x = Math.sin(seed * 0.0001 + salt * 12.9898) * 43758.5453;
+  return x - Math.floor(x);
+}
+
 export default function FlightLine({ connection, nodeMap }: Props) {
   const fromNode = nodeMap[connection.from];
   const toNode   = nodeMap[connection.to];
@@ -38,12 +52,15 @@ export default function FlightLine({ connection, nodeMap }: Props) {
   // Travelling head particle
   const pulseRefs = useRef<(THREE.Mesh | null)[]>([]);
   const pulseMeta = useMemo(() => {
+    const seed = hashString(`${connection.from}-${connection.to}-${connection.delay}`);
     return Array.from({ length: PULSE_COUNT }).map((_, i) => ({
-      offset: connection.delay * 0.31 + i * 0.22,
-      speed: connection.speed * (0.16 + i * 0.03),
-      size: i === 0 ? 0.016 : i === 1 ? 0.011 : 0.008,
-      opacity: i === 0 ? 0.95 : i === 1 ? 0.65 : 0.45,
-      scale: i === 0 ? 1 : i === 1 ? 0.72 : 0.55,
+      offset: seededRandom(seed, i + 1) * 0.92,
+      speed: connection.speed * (0.14 + seededRandom(seed, i + 11) * 0.08),
+      size: 0.007 + seededRandom(seed, i + 21) * 0.012,
+      opacity: 0.42 + seededRandom(seed, i + 31) * 0.53,
+      scale: 0.5 + seededRandom(seed, i + 41) * 0.72,
+      drift: seededRandom(seed, i + 51) * 0.05,
+      wobble: seededRandom(seed, i + 61) * 0.18,
     }));
   }, [connection.delay, connection.speed]);
 
@@ -54,10 +71,14 @@ export default function FlightLine({ connection, nodeMap }: Props) {
       if (!mesh) return;
       const progress = (elapsed * meta.speed + meta.offset) % 1;
       const pos = curve.getPoint(progress);
+      const tangent = curve.getTangent(progress);
+      const normal = new THREE.Vector3(-tangent.y, tangent.x, tangent.z).normalize();
+      const lateral = normal.multiplyScalar(Math.sin((elapsed + progress) * 8 + i) * meta.wobble);
+      pos.addScaledVector(tangent, meta.drift).add(lateral);
       mesh.position.copy(pos);
-      mesh.scale.setScalar(meta.scale + Math.sin((progress + i * 0.15) * Math.PI) * 0.12);
+      mesh.scale.setScalar(meta.scale + Math.sin((progress + i * 0.15) * Math.PI) * 0.16);
       const material = mesh.material as THREE.MeshBasicMaterial;
-      material.opacity = Math.max(0.06, meta.opacity * (0.35 + Math.sin(progress * Math.PI) * 0.65));
+      material.opacity = Math.max(0.08, meta.opacity * (0.28 + Math.sin(progress * Math.PI) * 0.72));
     });
   });
 
