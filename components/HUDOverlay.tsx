@@ -51,8 +51,8 @@ export default function HUDOverlay({ tickers }: Props) {
         <nav className="mx-auto max-w-7xl flex items-center justify-between pointer-events-auto">
           {/* Logo */}
           <div className="flex items-center gap-3 fade-up" style={{ animationDelay: '0.2s' }}>
-            <div className="relative w-9 h-9">
-              <Image src="/assets/logo.png" alt="Luxora" fill className="object-contain" sizes="36px" />
+            <div className="relative h-11 w-11 sm:h-14 sm:w-14">
+              <Image src="/assets/logo.png" alt="Luxora Payments logo" fill className="object-contain" sizes="56px" />
             </div>
             <span className="text-white font-extralight tracking-[0.32em] text-xs uppercase">
               Luxora Payments
@@ -112,7 +112,7 @@ export default function HUDOverlay({ tickers }: Props) {
           <div className="fade-up flex items-center justify-center gap-3 mb-8" style={{ animationDelay: '0.8s' }}>
             <div className="w-8 h-px bg-[#D4AF37]/50" />
             <span className="text-[10px] font-light tracking-[0.45em] uppercase text-[#D4AF37]/70">
-              Sovereign Network · 5 Global Nodes
+              Luxora Payments · 5 Global Nodes
             </span>
             <div className="w-8 h-px bg-[#D4AF37]/50" />
           </div>
@@ -124,10 +124,10 @@ export default function HUDOverlay({ tickers }: Props) {
               fontSize: 'clamp(2rem, 5vw + 0.5rem, 4.5rem)',
             }}
           >
-            <span className="text-white">The Sovereign</span>
+            <span className="text-white">Luxora</span>
             <br />
             <em className="not-italic" style={{ color: '#D4AF37', fontStyle: 'italic' }}>
-              Liquidity Network.
+              Payments.
             </em>
           </h1>
 

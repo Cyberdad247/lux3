@@ -3,7 +3,7 @@ import './globals.css';
 import '@typeform/embed/build/css/popup.css';
 
 export const metadata: Metadata = {
-  title: 'Luxora — The Sovereign Network.',
+  title: 'Luxora Payments',
   description: 'We assist businesses with onboarding and high-value transactions. Instant global payments for businesses prepared for the next crypto wave.',
   keywords: ['crypto payments', 'institutional payments', 'high-value transactions', 'global onboarding', 'enterprise crypto'],
 };
