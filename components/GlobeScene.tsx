@@ -2,7 +2,7 @@
 
 import { Suspense, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stars } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import SovereignGlobe from './SovereignGlobe';
 import NetworkNode from './NetworkNode';
 import FlightLine from './FlightLine';

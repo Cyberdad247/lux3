@@ -28,8 +28,6 @@ export default function FlightLine({ connection, nodeMap }: Props) {
 
   // Travelling head particle
   const particleRef = useRef<THREE.Mesh>(null);
-  const trailPtsRef = useRef<THREE.Vector3[]>(arcPoints.slice(0, 2));
-  const trailLineRef = useRef<{ setPoints: (pts: THREE.Vector3[]) => void } | null>(null);
   const progressRef = useRef((connection.delay * 0.31) % 1);
 
   useFrame((_, delta) => {
