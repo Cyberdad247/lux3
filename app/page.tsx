@@ -2,7 +2,6 @@ import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import RefCapture from '@/components/RefCapture';
 import HUDOverlay from '@/components/HUDOverlay';
-import VipSection from '@/components/VipSection';
 import type { TickerItem } from '@/components/LiquidTicker';
 
 // Dynamic import: WebGL canvas must not render on server
@@ -61,8 +60,6 @@ export default async function Home() {
 
       {/* 2D HUD - floats above canvas */}
       <HUDOverlay tickers={tickers} />
-
-      <VipSection />
     </main>
   );
 }
