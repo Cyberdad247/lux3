@@ -71,20 +71,31 @@ export default function HUDOverlay({ tickers }: Props) {
           </div>
 
           {/* CTA */}
-          <button
-            onClick={openTypeform}
-            className="fade-up relative flex items-center gap-2 px-6 py-2.5 rounded-full text-[11px]
-                       font-light tracking-[0.2em] uppercase text-black cursor-pointer
-                       transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(212,175,55,0.5)]"
-            style={{
-              animationDelay: '0.6s',
-              background: 'linear-gradient(135deg, #D4AF37 0%, #E8D48B 50%, #D4AF37 100%)',
-            }}
-          >
-            <span className="absolute inset-0 rounded-full animate-ping opacity-20"
-              style={{ background: 'rgba(212,175,55,0.5)', animationDuration: '2.2s' }} />
-            Enter The Spire
-          </button>
+          <div className="flex items-center gap-3">
+            <div className="hidden lg:flex flex-col items-end text-right">
+              <span className="text-[9px] font-light tracking-[0.3em] uppercase text-white/35">
+                Instant global payments
+              </span>
+              <a href="mailto:partners@luxorapayments.com" className="text-[10px] tracking-[0.18em] text-[#D4AF37]">
+                partners@luxorapayments.com
+              </a>
+              <span className="text-[9px] tracking-[0.24em] uppercase text-white/30">Contact : partners@luxorapayments.com</span>
+            </div>
+            <button
+              onClick={openTypeform}
+              className="fade-up relative flex items-center gap-2 px-6 py-2.5 rounded-full text-[11px]
+                         font-light tracking-[0.2em] uppercase text-black cursor-pointer
+                         transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(212,175,55,0.5)]"
+              style={{
+                animationDelay: '0.6s',
+                background: 'linear-gradient(135deg, #D4AF37 0%, #E8D48B 50%, #D4AF37 100%)',
+              }}
+            >
+              <span className="absolute inset-0 rounded-full animate-ping opacity-20"
+                style={{ background: 'rgba(212,175,55,0.5)', animationDuration: '2.2s' }} />
+              Apply Now
+            </button>
+          </div>
         </nav>
       </header>
 
@@ -120,8 +131,8 @@ export default function HUDOverlay({ tickers }: Props) {
               fontSize: 'clamp(0.85rem, 1.5vw, 1.05rem)',
             }}
           >
-            Real-time crypto-to-fiat settlement flowing across<br />
-            NYC · London · Zurich · Tokyo · Singapore.
+            We assist businesses with onboarding and high-value transactions.<br />
+            We can set up anyone in the world on any part of the globe. It pays to partner with Luxora.
           </p>
 
           <button
@@ -137,8 +148,28 @@ export default function HUDOverlay({ tickers }: Props) {
             <span className="absolute inset-0 rounded-full animate-ping opacity-15"
               style={{ background: 'rgba(212,175,55,0.5)', animationDuration: '2.4s' }} />
             <Globe size={15} />
-            Connect To The Network
+            Apply Now
           </button>
+
+          <div className="fade-up pointer-events-auto mt-8 grid gap-4 rounded-2xl border border-white/[0.08] bg-black/30 px-5 py-4 text-left sm:grid-cols-[1.2fr_0.8fr]"
+            style={{ animationDelay: '1.55s' }}>
+            <div className="space-y-1">
+              <div className="text-[10px] tracking-[0.35em] uppercase text-white/35">Speak with our team</div>
+              <div className="text-sm text-white/70">We assist businesses with onboarding and high-value transactions.</div>
+              <div className="text-[10px] tracking-[0.28em] uppercase text-white/35">
+                DONT MISS THE NEXT WAVE OF PAYMENTS
+              </div>
+            </div>
+            <div className="space-y-2 sm:text-right">
+              <div className="text-[10px] tracking-[0.35em] uppercase text-white/35">Contact us at</div>
+              <a className="block text-[var(--color-gold)] hover:underline" href="mailto:partners@luxorapayments.com">
+                partners@luxorapayments.com
+              </a>
+              <a className="block text-[var(--color-gold)] hover:underline" href="mailto:onboarding@luxorapayments.com">
+                onboarding@luxorapayments.com
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 

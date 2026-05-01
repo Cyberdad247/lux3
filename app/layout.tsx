@@ -4,8 +4,8 @@ import '@typeform/embed/build/css/popup.css';
 
 export const metadata: Metadata = {
   title: 'Luxora — The Sovereign Network.',
-  description: 'Real-time crypto-to-fiat settlement across 5 global nodes. NYC · London · Zurich · Tokyo · Singapore.',
-  keywords: ['crypto payments', 'institutional payments', 'bitcoin settlement', 'global liquidity', 'enterprise crypto'],
+  description: 'We assist businesses with onboarding and high-value transactions. Instant global payments for businesses prepared for the next crypto wave.',
+  keywords: ['crypto payments', 'institutional payments', 'high-value transactions', 'global onboarding', 'enterprise crypto'],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
