@@ -12,9 +12,6 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
-      fontFamily: {
-        mono: ["'Space Mono'", "'JetBrains Mono'", "'Fira Code'", "ui-monospace", "monospace"],
-      },
     },
   },
   plugins: [],
