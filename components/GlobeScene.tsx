@@ -30,10 +30,11 @@ export default function GlobeScene() {
         style={{ background: '#010101' }}
       >
         {/* Lighting */}
-        <ambientLight intensity={0.15} />
-        <pointLight position={[4, 4, 4]}   color="#D4AF37" intensity={1.2} />
-        <pointLight position={[-4, -2, -3]} color="#ffffff" intensity={0.35} />
-        <pointLight position={[0, 5, -2]}   color="#D4AF37" intensity={0.4} />
+        <ambientLight intensity={0.22} />
+        <pointLight position={[4, 4, 4]}   color="#D4AF37" intensity={1.45} />
+        <pointLight position={[-4, -2, -3]} color="#ffffff" intensity={0.42} />
+        <pointLight position={[0, 5, -2]}   color="#D4AF37" intensity={0.5} />
+        <pointLight position={[0, -3, 3]}   color="#E8D48B" intensity={0.28} />
 
         {/* No stars — pure void per blueprint */}
 
@@ -55,7 +56,7 @@ export default function GlobeScene() {
           minPolarAngle={Math.PI * 0.2}
           maxPolarAngle={Math.PI * 0.8}
           autoRotate
-          autoRotateSpeed={0.25}
+          autoRotateSpeed={0.28}
           enableDamping
           dampingFactor={0.06}
           rotateSpeed={0.55}
